@@ -2324,3 +2324,95 @@ body {
         font-size: var(--font-size-sm);
     }
 }
+
+/* Mobile Panel Styling - Remove Rounded Edges */
+@media (max-width: 768px) {
+    .floating-panel {
+        border-radius: 0;
+        margin: 2rem 0;
+    }
+    
+    /* Remove rounded edges from images inside panels */
+    .floating-panel .journey-visual,
+    .floating-panel .mentor-visual,
+    .floating-panel .tribu-visual,
+    .floating-panel .sky-sea-visual {
+        border-radius: 0;
+    }
+    
+    .floating-panel .journey-image,
+    .floating-panel .mentor-image,
+    .floating-panel .tribu-image,
+    .floating-panel .sky-sea-image {
+        border-radius: 0;
+    }
+}
+
+/* Prevent Dark Mode Override */
+@media (prefers-color-scheme: dark) {
+    /* Force light mode colors regardless of system preference */
+    * {
+        color-scheme: light !important;
+    }
+    
+    body {
+        background-color: var(--white) !important;
+        color: var(--text-dark) !important;
+    }
+    
+    .floating-panel {
+        background: rgba(255, 255, 255, 0.95) !important;
+        color: var(--text-dark) !important;
+    }
+    
+    .header,
+    .navbar {
+        background-color: var(--white) !important;
+        color: var(--text-dark) !important;
+    }
+    
+    .nav-link {
+        color: var(--text-color) !important;
+    }
+    
+    .footer {
+        background-color: var(--white) !important;
+        color: var(--text-dark) !important;
+    }
+    
+    /* Ensure text elements maintain their intended colors */
+    h1, h2, h3, h4, h5, h6, p, span, div {
+        color: inherit !important;
+    }
+    
+    /* Maintain specific styled elements */
+    .hero-aka {
+        color: var(--ocean-blue) !important;
+    }
+    
+    .logo-accent {
+        color: var(--primary-orange) !important;
+    }
+    
+    .mentor-title {
+        color: var(--primary-orange) !important;
+    }
+    
+    /* Buttons and interactive elements */
+    .btn {
+        background: var(--gradient-sunset) !important;
+        color: white !important;
+    }
+    
+    .btn-secondary {
+        background: var(--gradient-ocean) !important;
+        color: white !important;
+    }
+    
+    /* Form elements if any */
+    input, textarea, select {
+        background-color: var(--white) !important;
+        color: var(--text-dark) !important;
+        border-color: var(--border-light) !important;
+    }
+}
