@@ -2348,25 +2348,50 @@ body {
     }
 }
 
-/* Prevent Dark Mode Override */
+/* Comprehensive Dark Mode Prevention */
+html {
+    color-scheme: light only !important;
+}
+
+* {
+    color-scheme: light !important;
+}
+
+/* Force light mode regardless of system preference */
 @media (prefers-color-scheme: dark) {
-    /* Force light mode colors regardless of system preference */
-    * {
+    /* Root and body level overrides */
+    :root {
         color-scheme: light !important;
+    }
+    
+    html {
+        color-scheme: light !important;
+        background-color: var(--white) !important;
     }
     
     body {
         background-color: var(--white) !important;
         color: var(--text-dark) !important;
+        forced-color-adjust: none !important;
     }
     
+    /* All elements should inherit light theme */
+    *, *::before, *::after {
+        color-scheme: light !important;
+        forced-color-adjust: none !important;
+    }
+    
+    /* Floating panels protection */
     .floating-panel {
         background: rgba(255, 255, 255, 0.95) !important;
         color: var(--text-dark) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
     }
     
+    /* Navigation protection */
     .header,
-    .navbar {
+    .navbar,
+    .nav-container {
         background-color: var(--white) !important;
         color: var(--text-dark) !important;
     }
@@ -2375,17 +2400,30 @@ body {
         color: var(--text-color) !important;
     }
     
+    .nav-link:hover {
+        color: var(--primary-orange) !important;
+    }
+    
+    /* Footer protection */
     .footer {
         background-color: var(--white) !important;
         color: var(--text-dark) !important;
     }
     
-    /* Ensure text elements maintain their intended colors */
-    h1, h2, h3, h4, h5, h6, p, span, div {
+    /* Text elements protection */
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-dark) !important;
+    }
+    
+    p, span, div, a {
         color: inherit !important;
     }
     
-    /* Maintain specific styled elements */
+    /* Specific branded elements */
+    .hero-name {
+        color: var(--text-dark) !important;
+    }
+    
     .hero-aka {
         color: var(--ocean-blue) !important;
     }
@@ -2394,14 +2432,20 @@ body {
         color: var(--primary-orange) !important;
     }
     
+    .section-tag {
+        background: var(--gradient-sunset) !important;
+        color: white !important;
+    }
+    
     .mentor-title {
         color: var(--primary-orange) !important;
     }
     
-    /* Buttons and interactive elements */
+    /* Button protection */
     .btn {
         background: var(--gradient-sunset) !important;
         color: white !important;
+        border: none !important;
     }
     
     .btn-secondary {
@@ -2409,10 +2453,62 @@ body {
         color: white !important;
     }
     
-    /* Form elements if any */
-    input, textarea, select {
+    .btn:hover {
+        opacity: 0.9 !important;
+    }
+    
+    /* Form elements */
+    input, textarea, select, button {
         background-color: var(--white) !important;
         color: var(--text-dark) !important;
         border-color: var(--border-light) !important;
     }
+    
+    /* Social links */
+    .social-link {
+        color: var(--text-dark) !important;
+    }
+    
+    .social-link:hover {
+        color: var(--primary-orange) !important;
+    }
+    
+    /* Hero background protection */
+    .hero::before {
+        filter: none !important;
+    }
+    
+    /* Image containers */
+    .journey-visual,
+    .mentor-visual,
+    .tribu-visual,
+    .sky-sea-visual {
+        filter: none !important;
+    }
+    
+    /* Top stripe colors protection */
+    .top-stripe .stripe-color-1 {
+        background-color: #071446 !important;
+    }
+    
+    .top-stripe .stripe-color-2 {
+        background-color: #1e68ff !important;
+    }
+    
+    .top-stripe .stripe-color-3 {
+        background-color: #58b3ff !important;
+    }
+}
+
+/* Additional protection for webkit browsers */
+@supports (-webkit-appearance: none) {
+    * {
+        color-scheme: light !important;
+        -webkit-color-scheme: light !important;
+    }
+}
+
+/* Force color scheme in meta tag style */
+html[data-theme="light"] {
+    color-scheme: light !important;
 }
