@@ -1254,8 +1254,9 @@ body {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto;
     align-items: center;
+    justify-content: space-between;
     gap: 2rem;
     margin-bottom: 2rem;
     max-width: 1200px;
@@ -1297,6 +1298,8 @@ body {
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
 }
 
 .social-link {
