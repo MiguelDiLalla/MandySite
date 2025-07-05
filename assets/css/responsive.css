@@ -231,36 +231,7 @@
     }
 }
 
-/* Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --primary-color: #4dabf7;
-        --dark-color: #f8f9fa;
-        --light-color: #343a40;
-        --white: #212529;
-        --text-color: #f8f9fa;
-        --text-light: #adb5bd;
-        --border-color: #495057;
-    }
-    
-    .header {
-        background-color: var(--white);
-        border-bottom: 1px solid var(--border-color);
-    }
-    
-    .hero {
-        background: linear-gradient(135deg, var(--light-color) 0%, var(--white) 100%);
-    }
-    
-    .portfolio {
-        background-color: var(--light-color);
-    }
-    
-    .portfolio-item {
-        background-color: var(--white);
-        border: 1px solid var(--border-color);
-    }
-}
+
 
 /* Print Styles */
 @media print {
