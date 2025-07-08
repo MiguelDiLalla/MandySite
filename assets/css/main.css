@@ -65,11 +65,23 @@ body {
     font-family: "Rokkitt", serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--light-blue) 50%, var(--primary-orange) 100%);
+    background: url('../images/wave.webp') center/cover no-repeat fixed !important;
     background-attachment: fixed;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+}
+
+/* Wave background override: apply full-page and hero backgrounds with wave image */
+html, body {
+    background: url("/assets/images/wave.webp") no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-color: transparent !important;
+}
+.hero {
+    background: url("/assets/images/wave.webp") no-repeat center center fixed !important;
+    background-size: cover !important;
+    background-color: transparent !important;
 }
 
 /* Custom Font Classes */
@@ -356,7 +368,7 @@ body {
 
 .hero {
     padding: 120px 0 100px 0;
-    background: transparent;
+    background: url('../images/wave.webp') center/cover no-repeat !important;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1336,6 +1348,13 @@ body {
     font-size: var(--font-size-sm);
 }
 
+/* Footer transparency override: allow background image to show through */
+.footer,
+.footer-bottom {
+    background: transparent !important;
+    border-top: none !important;
+}
+
 /* Floating Panel Base Style */
 .floating-panel {
     background: rgba(255, 255, 255, 0.95);
@@ -1718,6 +1737,28 @@ body {
         font-size: var(--font-size-lg);
         min-height: 2rem;
     }
+}
+
+/* Hero role tags text color always #b54718 */
+.hero .role-text {
+    color: #b54718 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .hero .role-text {
+        color: #b54718 !important;
+    }
+}
+
+/* Hero tags text color always #b54718 */
+.hero .section-tag {
+    color: #b54718 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero .section-tag {
+    color: #b54718 !important;
+  }
 }
 
 /* Journey Section Styles */
@@ -2514,4 +2555,108 @@ html {
 /* Force color scheme in meta tag style */
 html[data-theme="light"] {
     color-scheme: light !important;
+}
+
+/* Dark-mode override: keep light theme when user prefers dark */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light only !important;
+    forced-color-adjust: none !important;
+    background-color: #ffffff !important;
+    color: #333333 !important;
+  }
+
+  /* Remove gradient overlays that occlude background images */
+  .hero::before,
+  .floating-panel::before {
+    background: none !important;
+  }
+
+  /* Ensure section backgrounds stay transparent */
+  .hero,
+  .journey,
+  .mentor,
+  .tribu,
+  .sky-sea {
+    background-color: transparent !important;
+  }
+
+  /* Restore text colors */
+  .hero-name,
+  .hero-aka,
+  .section-tag,
+  .mentor-quote p,
+  .journey-quote p,
+  .tribu-quote p,
+  .sky-sea-quote p {
+    color: #ffffff !important;
+  }
+
+  /* Buttons and social icons: preserve original look */
+  .btn-primary,
+  .instagram-link,
+  .social-link i {
+    filter: none !important;
+    color: inherit !important;
+    background: var(--gradient-primary) !important;
+  }
+}
+
+/* Remove all colorful gradients and let images show through */
+
+/* Accent elements (tags, buttons, links) */
+.section-tag,
+.btn-primary,
+.btn-secondary,
+.instagram-link,
+.tribu-btn,
+.sky-sea-btn {
+  background-image: none !important;
+  background: var(--white) !important;
+  color: var(--text-dark) !important;
+  border-color: var(--border-light) !important;
+}
+
+/* Hero and panels: transparent backgrounds */
+.hero,
+.journey,
+.mentor,
+.tribu,
+.sky-sea {
+  background: transparent !important;
+}
+
+.hero::before,
+.floating-panel::before {
+  background: transparent !important;
+}
+
+/* Mi Tribu panel text always in light yellow shade */
+.floating-panel.tribu * {
+    color: #fff3b5 !important;
+}
+
+/* Mi Tribu panel: restore orange gradient for tag and button */
+.floating-panel.tribu .section-tag,
+.floating-panel.tribu .tribu-btn {
+    background: var(--gradient-sunset) !important;
+    color: #190000 !important;
+    border: none !important;
+}
+
+/* Mi Viaje and Mi Mentora panels always white */
+.floating-panel.journey,
+.floating-panel.mentor {
+    background: #fff !important;
+    color: var(--text-dark) !important;
+}
+
+/* Mi Viaje and Mi Mentora: tags and buttons use orange gradient */
+.floating-panel.journey .section-tag,
+.floating-panel.mentor .section-tag,
+.floating-panel.journey .btn-primary,
+.floating-panel.mentor .btn-primary {
+    background: var(--gradient-sunset) !important;
+    color: #190000 !important;
+    border: none !important;
 }
