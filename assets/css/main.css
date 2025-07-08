@@ -1,3 +1,11 @@
+/* Final Dark Mode Footer Transparency Fix */
+@media (prefers-color-scheme: dark) {
+    .footer,
+    .footer-bottom {
+        background: none !important;
+        background-color: transparent !important;
+    }
+}
 /* Main Styles */
 
 /* CSS Variables - Warm Sunset Journey Theme */
@@ -73,13 +81,8 @@ body {
 }
 
 /* Wave background override: apply full-page and hero backgrounds with wave image */
-html, body {
-    background: url("/assets/images/wave.webp") no-repeat center center fixed !important;
-    background-size: cover !important;
-    background-color: transparent !important;
-}
-.hero {
-    background: url("/assets/images/wave.webp") no-repeat center center fixed !important;
+html, body, .hero {
+    background: url('../images/wave.webp') no-repeat center center fixed !important;
     background-size: cover !important;
     background-color: transparent !important;
 }
@@ -156,6 +159,17 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: var(--font-weight-extrabold);
+}
+
+/* Force hero subheader AKA Mandy color in all modes */
+.hero-aka {
+    color: #071345 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .hero-aka {
+        color: #071345 !important;
+    }
 }
 
 /* Enhanced Button Styles - Sales Focused */
@@ -383,7 +397,7 @@ html, body {
     left: 0;
     width: 200vw; /* Make image twice the viewport width for scroll effect */
     height: 100vh;
-    background: url('../images/wave.jpg') left center/cover no-repeat;
+    background: url('../images/wave.webp') left center/cover no-repeat !important;
     z-index: -1;
     transform: translateX(var(--parallax-x));
     transition: none; /* Remove transition for smooth scrolling */
@@ -452,7 +466,7 @@ html, body {
     font-size: clamp(1.5rem, 4vw, 2.5rem);
     font-weight: var(--font-weight-medium);
     margin: 0 0 1rem 0;
-    color: var(--ocean-blue);
+    color: #071345 !important;
     font-style: italic;
     opacity: 0.9;
 }
@@ -1353,6 +1367,15 @@ html, body {
 .footer-bottom {
     background: transparent !important;
     border-top: none !important;
+}
+
+/* Dark Mode Footer Transparency Override */
+@media (prefers-color-scheme: dark) {
+    .footer,
+    .footer-bottom {
+        background: none !important;
+        background-color: transparent !important;
+    }
 }
 
 /* Floating Panel Base Style */
@@ -2410,11 +2433,11 @@ html {
     
     html {
         color-scheme: light !important;
-        background-color: var(--white) !important;
+        background-color: transparent !important;
     }
     
     body {
-        background-color: var(--white) !important;
+        background-color: transparent !important;
         color: var(--text-dark) !important;
         forced-color-adjust: none !important;
     }
@@ -2448,10 +2471,12 @@ html {
         color: var(--primary-orange) !important;
     }
     
-    /* Footer protection */
-    .footer {
-        background-color: var(--white) !important;
-        color: var(--text-dark) !important;
+    /* Footer protection: transparent background */
+    .footer,
+    .footer-bottom {
+        background: none !important;
+        background-color: transparent !important;
+        /* Color remains as forced light */
     }
     
     /* Text elements protection */
